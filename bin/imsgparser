@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+var path = require('path');
+var fs   = require('fs');
+var lib  = path.join(path.dirname(fs.realpathSync(__filename)), '../lib/');
+
+Parser = require(lib + 'parser')
+if(process.argv.length > 2)
+{
+  new Parser(process.argv[2]).parse(function(result){ console.log(result) });
+}
+else
+{
+  console.error("Not enough parameters");
+  console.error(process.argv);
+}
+
